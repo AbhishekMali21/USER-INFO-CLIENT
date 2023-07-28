@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import axios from 'axios';
 import UserList from './UserList';
 
-const API_BASE_URL = 'http://localhost:9090/api';
+const API_BASE_URL =
+	process.env.NODE_ENV === 'production'
+		? 'https://user-info-server-production.up.railway.app/api'
+		: 'http://localhost:9090/api';
 
 type Props = {};
 
@@ -74,6 +77,7 @@ const UserDetailsForm: React.FC<Props> = (props) => {
 	return (
 		<>
 			<FormContainer onSubmit={handleFormSubmit}>
+				{console.log(process.env)}
 				<FormHeading>
 					{isSubmitted ? 'Submitted User Info Form' : 'User Info Form'}
 				</FormHeading>

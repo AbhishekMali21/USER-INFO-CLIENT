@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-const API_BASE_URL = 'http://localhost:9090/api';
+const API_BASE_URL =
+	process.env.NODE_ENV === 'production'
+		? 'https://user-info-server-production.up.railway.app/api'
+		: 'http://localhost:9090/api';
 
 const UserList: React.FC = () => {
 	const [users, setUsers] = useState<any[]>([]);
