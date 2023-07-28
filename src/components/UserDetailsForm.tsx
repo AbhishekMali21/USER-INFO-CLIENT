@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import UserList from './UserList';
 
 const API_BASE_URL = 'http://localhost:9090/api';
 
@@ -71,65 +72,68 @@ const UserDetailsForm: React.FC<Props> = (props) => {
 	};
 
 	return (
-		<FormContainer onSubmit={handleFormSubmit}>
-			<FormHeading>
-				{isSubmitted ? 'Submitted User Info Form' : 'User Info Form'}
-			</FormHeading>
-			<div className='form-group'>
-				<FormLabel>Name</FormLabel>
-				<FormInput
-					type='text'
-					className='form-control'
-					value={name}
-					onChange={(e: any) => setName(e.target.value)}
-				/>
-			</div>
-			<div className='form-group'>
-				<FormLabel>Email</FormLabel>
-				<FormInput
-					type='email'
-					className='form-control'
-					value={email}
-					onChange={(e: any) => setEmail(e.target.value)}
-				/>
-			</div>
-			<div className='form-group'>
-				<FormLabel>Date of Birth</FormLabel>
-				<FormInput
-					type='date'
-					className='form-control'
-					value={dob}
-					onChange={(e: any) => setDob(e.target.value)}
-				/>
-			</div>
-			<div className='form-group'>
-				<FormLabel>Phone Number</FormLabel>
-				<FormInput
-					type='tel'
-					className='form-control'
-					value={phoneNo}
-					onChange={(e: any) => setPhoneNo(e.target.value)}
-				/>
-			</div>
-			{apiResponse?.message && <FormText>{apiResponse.message}</FormText>}
-			{/* {console.log(apiResponse)} */}
-			<ButtonContainer>
-				<FormButton
-					type='submit'
-					className='btn btn-primary'
-					onClick={handleFormSubmit}
-				>
-					Submit
-				</FormButton>
-				<FormButton
-					type='button'
-					className='btn btn-secondary'
-					onClick={handleFormReset}
-				>
-					Reset
-				</FormButton>
-			</ButtonContainer>
-		</FormContainer>
+		<>
+			<FormContainer onSubmit={handleFormSubmit}>
+				<FormHeading>
+					{isSubmitted ? 'Submitted User Info Form' : 'User Info Form'}
+				</FormHeading>
+				<div className='form-group'>
+					<FormLabel>Name</FormLabel>
+					<FormInput
+						type='text'
+						className='form-control'
+						value={name}
+						onChange={(e: any) => setName(e.target.value)}
+					/>
+				</div>
+				<div className='form-group'>
+					<FormLabel>Email</FormLabel>
+					<FormInput
+						type='email'
+						className='form-control'
+						value={email}
+						onChange={(e: any) => setEmail(e.target.value)}
+					/>
+				</div>
+				<div className='form-group'>
+					<FormLabel>Date of Birth</FormLabel>
+					<FormInput
+						type='date'
+						className='form-control'
+						value={dob}
+						onChange={(e: any) => setDob(e.target.value)}
+					/>
+				</div>
+				<div className='form-group'>
+					<FormLabel>Phone Number</FormLabel>
+					<FormInput
+						type='tel'
+						className='form-control'
+						value={phoneNo}
+						onChange={(e: any) => setPhoneNo(e.target.value)}
+					/>
+				</div>
+				{apiResponse?.message && <FormText>{apiResponse.message}</FormText>}
+				{/* {console.log(apiResponse)} */}
+				<ButtonContainer>
+					<FormButton
+						type='submit'
+						className='btn btn-primary'
+						onClick={handleFormSubmit}
+					>
+						Submit
+					</FormButton>
+					<FormButton
+						type='button'
+						className='btn btn-secondary'
+						onClick={handleFormReset}
+					>
+						Reset
+					</FormButton>
+				</ButtonContainer>
+			</FormContainer>
+			{apiResponse?.message && <UserList />}
+		</>
 	);
 };
 
