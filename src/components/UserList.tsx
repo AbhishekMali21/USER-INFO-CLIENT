@@ -8,7 +8,6 @@ const UserList: React.FC = () => {
 	const [users, setUsers] = useState<any[]>([]);
 
 	useEffect(() => {
-		// Fetch the list of all users from the backend
 		const fetchUsers = async () => {
 			try {
 				const response = await axios.get(

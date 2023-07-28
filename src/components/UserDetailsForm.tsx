@@ -114,7 +114,6 @@ const UserDetailsForm: React.FC<Props> = (props) => {
 					/>
 				</div>
 				{apiResponse?.message && <FormText>{apiResponse.message}</FormText>}
-				{/* {console.log(apiResponse)} */}
 				<ButtonContainer>
 					<FormButton
 						type='submit'
